@@ -2,6 +2,7 @@
 const express = require("express");
 const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
+const passport = require("passport");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const recordRoutes = require("./routes/record");
@@ -12,6 +13,9 @@ mongoose
   .connect(MONGO_URI)
   .then(() => console.log("DB connected"))
   .catch((e) => console.log(e));
+
+app.use(passport.initialize());
+require("./middleware/passport")(passport);
 
 app.use(morgan("dev"));
 app.use(require("cors")());
