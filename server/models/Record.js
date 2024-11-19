@@ -25,7 +25,7 @@ const recordSchema = new Schema({
       default: 0,
     },
   },
-  photoSrc: {
+  imgSrc: {
     type: String,
     default: "",
   },

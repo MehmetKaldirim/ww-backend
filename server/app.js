@@ -1,4 +1,3 @@
-//here we will describe all app
 const express = require("express");
 const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
@@ -20,7 +19,11 @@ require("./middleware/passport")(passport);
 app.use(morgan("dev"));
 app.use(require("cors")());
 
-app.use("/uploads", express.static(process.cwd() + "/server/uploads/"));
+// Debug: Check process.cwd()
+console.log("Process Current Working Directory:", process.cwd());
+
+// Ensure this matches where Multer saves files
+app.use("/uploads", express.static(process.cwd() + "/uploads/"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
